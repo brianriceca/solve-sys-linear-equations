@@ -9,9 +9,14 @@ def determinant(A):
     det *= A[i][i]
   return det
 
-matrix = [ [ 2, 1, -1, 5],
-           [ 1, -3, 2, -1],
-           [ -1, 2, 1, 4] ]
+matrix = [ [ 2, 1, -1, 2.5, 5],
+           [ 1, -3, 2, -0.5, -1],
+           [ 0, 2, 1, 6, 4],
+           [ 8, 2, -3, -5, -4] ]
+
+#matrix = [ [ 2, 1, -1, 5],
+#           [ 1, -3, 2, -1],
+#           [ -1, 2, 1, 4] ]
 
 #matrix = [ [ 1, 2, 6],
 #           [ -1, 4, -4 ] ]
@@ -57,11 +62,12 @@ for pivot in range(len(matrix)-1):
   print(f"I have to pivot on matrix[{pivot}][{pivot}] = {matrix[pivot][pivot]}")
   for row in range(pivot+1,len(matrix)):
     print(f"Let's mess with row {row}")
-    print(f"...I hate this {matrix[row][pivot]} in matrix[{row}][{pivot}]")
-    gottamultiplyby = matrix[row][pivot] / matrix[pivot][pivot]
-    print(f"...To get rid of it I have to subtract {gottamultiplyby} copies of {matrix[pivot]}")
-    for col in range(pivot,ncols):
-      newmatrix[row][col] = ( matrix[row][col] 
+    if matrix[row][pivot] != 0:
+      print(f"...I hate this {matrix[row][pivot]} in matrix[{row}][{pivot}]")
+      gottamultiplyby = matrix[row][pivot] / matrix[pivot][pivot]
+      print(f"...To get rid of it I have to subtract {gottamultiplyby} copies of {matrix[pivot]}")
+      for col in range(pivot,ncols):
+        newmatrix[row][col] = ( matrix[row][col] 
                               - 
                               gottamultiplyby * matrix[pivot][col] )
   print(f"resulting matrix is {newmatrix}")
