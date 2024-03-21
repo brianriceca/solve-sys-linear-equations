@@ -3,7 +3,7 @@
 import sys
 import copy
 
-def determinant(A):
+def pivotproduct(A):
   det = 1
   for i in range(len(A)):
     det *= A[i][i]
@@ -21,7 +21,7 @@ matrix = [ [ 2, 1, -1, 2.5, 5],
 #matrix = [ [ 1, 2, 6],
 #           [ -1, 4, -4 ] ]
 
-if (determinant(matrix) == 0):
+if (pivotproduct(matrix) == 0):
   print("I don't know how to reshuffle rows yet")
   sys.exit(1)
 
